@@ -1,3 +1,6 @@
 {
-    "HOME" : "Home"
+    "HOME" : "Home",
+    "auth": {
+      "SIGN_IN":  "Sign In"
+    }
 }

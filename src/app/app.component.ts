@@ -8,15 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   constructor (private translateServise: TranslateService){}
-  
+
   useKa() {
     this.translateServise.use('ka');
   }
-  
+
   useEn() {
     this.translateServise.use('en');
   }
-  
   ngOnInit(): void {
 
   }
