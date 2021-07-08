@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="d-flex movie-container">
+    <div class="movie-l">
+      <ng-container *ngIf="movieData$ | async as movieData">
+        <img [src]="movieData.Poster" [alt]="movieData.Title">
+      </ng-container>
+    </div>
+    <div class="movie-r">
+      <ng-container *ngIf="movieData$ | async as movieData">
+        <h2>{{ "catalogue.MOVIE_DESCRIPTION" | translate}}</h2>
+        <div class="movie-desc-row"><span>{{ "detail.TITLE" | translate }}:</span> {{ movieData.Title }}</div>
+        <div class="movie-desc-row"><span>{{ "detail.PLOT" | translate }}:</span>{{ movieData.Plot }}</div>
+        <div class="movie-desc-row"><span>{{ "detail.COUNTRY" | translate }}:</span> {{ movieData.Country }}</div>
+        <div class="movie-desc-row"><span>{{ "detail.GENRE" | translate }}:</span> {{ movieData.Genre }}</div>
+      </ng-container>
+      <div class="user-description">
+        <ng-container *ngIf="storeData$ | async as storeData">
+          <div class="movie-desc-row"><span>{{ "detail.REVIEW" | translate }}:</span> {{ storeData.review }}</div>
+          <div class="movie-desc-row"><span>{{ "detail.RATING" | translate }}:</span> {{ storeData.rating }}</div>
+          <div class="movie-desc-row"><span>{{ "detail.STATUS" | translate }}:</span> {{ storeData.status }}</div>
+          <div class="movie-desc-row"><span>{{ "detail.WATCH" | translate }}:</span> {{ storeData.whenToWatch }}</div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

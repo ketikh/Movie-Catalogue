@@ -1,0 +1,10 @@
+.auth-container {
+  width: 400px;
+  margin: 50px auto;
+}
+
+.page-title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+}

@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'helvetica-medium';
+  src: url('/assets/font/HelveticaNeueLTGEO-Medium.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ececec;
+  font-family: 'helvetica-medium';
+}
+
+.red-btn {
+  width: 100%;
+  background: rgb(229, 9, 20);
+  color: #fff;
+  font-size: 16px;
+}
+
+section {
+  padding-bottom: 100px;
+}

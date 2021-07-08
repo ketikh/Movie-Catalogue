@@ -1,0 +1,50 @@
+
+h1.main-title {
+  background: rgb(229, 9, 20);
+  color: #fff;
+  max-width: 55%;
+  margin: 30px auto 15px;
+  text-align: center;
+  position: relative;
+}
+
+h1.main-title:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-left: 43px solid #ececec;
+  border-bottom: 24px solid transparent;
+  border-top: 24px solid transparent;
+}
+
+h1.main-title:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-right: 43px solid #ececec;
+  border-bottom: 24px solid transparent;
+  border-top: 24px solid transparent;
+}
+
+.sub-title {
+  text-align: center;
+  color: #000;
+}
+
+.add-movie-btn {
+   margin: 0 auto 40px;
+    width: 200px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(229, 9, 20);
+    border-radius: 10px;
+    height: 50px;
+    text-transform: capitalize;
+    box-shadow: 0 0 4px rgb(0 0 0 / 10%);
+    font-size: 19px;
+}

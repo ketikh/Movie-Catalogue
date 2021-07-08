@@ -1,5 +1,5 @@
-{{ "HOME" | translate}}
-<button (click)="useKa()">Ka</button>
-<button (click)="useEn()">En</button>
-<router-outlet></router-outlet>
 <app-header></app-header>
+<section>
+  <router-outlet></router-outlet> <!-- ამის საშუალებით რენდერდება როუტები -->
+</section>
+<footer></footer>

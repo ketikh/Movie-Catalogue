@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ShellModule } from './shell/shell.module';
+import { SharedModule } from './shared/shared.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/','.json')
@@ -22,6 +25,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     AuthModule,
     ShellModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -29,7 +33,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
        defaultLanguage: 'ka',
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

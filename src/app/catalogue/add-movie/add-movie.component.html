@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="search-movie">
+    <input type="text" [(ngModel)]="searchKey" placeholder="{{ 'catalogue.ENTER_MOVIE_NAME' | translate }}">
+    <button (click)="search(searchKey)" class="btn red-btn">{{"catalogue.SEARCH" | translate}}</button>
+    <div class="d-flex badges">
+      <div class="badge" *ngFor="let name of lastThreeSearches" (click)="fetchMovie(name)">{{ name }}</div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="selectedMovie">
+    <div class="d-flex movie-container">
+      <div class="movie-l">
+        <img [src]="selectedMovie.poster" [alt]="selectedMovie.title">
+      </div>
+      <div class="movie-r">
+        <h2>{{ "catalogue.MOVIE_DESCRIPTION" | translate}}</h2>
+
+        <div class="movie-desc-row" *ngFor="let country of selectedMovie.countries">
+          <ng-container *ngIf="country">
+            <div>{{ getPopulation(country) }}</div>
+          </ng-container>
+        </div>
+        <div class="movie-desc-row">{{ selectedMovie.title }}</div>
+        <div class="movie-desc-row">{{ selectedMovie.plot }}</div>
+        <div class="movie-desc-row">
+          <span *ngFor="let genre of selectedMovie.genre">{{ genre }},</span>
+        </div>
+        <form [formGroup]="form">
+          <div class="d-flex mt-5">
+            <div class="col-6">
+              <h2>{{ "catalogue.REVIEW" | translate}}</h2>
+              <textarea formControlName="review" id="" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="col-6 px-5">
+              <h2>{{ "catalogue.WATCH" | translate}}</h2>
+              <select formControlName="status" class="form-select mb-3" aria-label="Default select example">
+                <option [value]="status.Watched">
+                  {{ "catalogue.WATCHED" | translate }}
+                </option>
+                <option [value]="status.WatchLater">
+                  {{ "catalogue.WATCH_LATER" | translate }}
+                </option>
+              </select>
+              <select formControlName="whenToWatch" *ngIf="canWatchLater" class="form-select">
+                <option [value]="null" hidden>
+                  {{ "catalogue.SELECT" | translate }}
+                </option>
+                <option *ngFor="let w of whenToWatch" [value]="w.value">
+                  {{ w.label | translate }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <h2>{{ "catalogue.RATING" | translate}}</h2>
+            <div class="d-flex mr-5">
+              <div class="form-check" *ngFor="let rating of ratings">
+                <input formControlName="rating" class="form-check-input" type="radio" [value]="rating">
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="submitted && form.invalid">
+            <div class="alert alert-danger mt-2" role="alert" *ngIf="form.controls.review?.errors?.required">
+              {{ "catalogue.REVIEW_REQUIRED" | translate}}
+            </div>
+            <div class="alert alert-danger mt-2" role="alert" *ngIf="form.controls.review?.errors?.minlength">
+              {{ "catalogue.REVIEW_MIN_SYMBOL" | translate}}
+            </div>
+          </ng-container>
+          <button class="btn red-btn submit-btn" (click)="submit()">{{ "catalogue.ADD_MOVIE" | translate }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="successAddMovie" id="hideMe">{{ "catalogue.MOVIE_HAS_BEEN_ADDED" | translate }}</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="col">
+  <div class="">
+    <div class="movie-poster" [style.background-image]="'url(' + item.movie.Poster + ')'">
+      <h2 class="movie-title">{{ item.movie.Title }}</h2>
+      <div class="rating"><img src="/assets/img/star.png" alt=""><div>{{ item.data.rating }}/5</div></div>
+    </div>
+    <div class="movie-block">
+      <div class="movie-text">
+        {{ item.movie.Plot }}
+      </div>
+        <div class="d-flex justify-content-end">
+          <button
+            (click)="goToDetails()"
+            type="button"
+            class="red-btn"
+          >
+            {{ "catalogue.DETAILS" | translate }}
+          </button>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <ng-container *ngFor="let item of movies$ | async">
+    <app-movie-list-item [item]="item"></app-movie-list-item>
+  </ng-container>
+</div>

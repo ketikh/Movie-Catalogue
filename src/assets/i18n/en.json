@@ -1,6 +1,46 @@
 {
     "HOME" : "Home",
+    "CATALOGUE": "Movie Catalogue",
     "auth": {
-      "SIGN_IN":  "Sign In"
+      "SIGN_IN":  "Sign In",
+      "SIGN_UP":  "Sign Up",
+      "SIGN_OUT": "Sign Out",
+      "EMAIL":  "Email",
+      "PASSWORD": "Password",
+      "PASSWORD-REPEAT": "Repeat Password",
+      "PASSWORD_REQUIRED": "Password Required",
+      "EMAIL_REQUIRED": "Email Required"
+    },
+    "catalogue": {
+      "WELCOME_MOVIE": "Welcome to Movie Catalogue",
+      "SUB_TITLE": "You can add your favourite movies with rating and reviews.",
+      "ADD_MOVIE": "Add Movie",
+      "DETAILS": "Details",
+      "ENTER_MOVIE_NAME": "Enter Movie Name...",
+      "SEARCH": "Search",
+      "WATCHED": "Watched",
+      "WATCH_LATER": "Watch Later",
+      "TOMORROW": "Tomorrow",
+      "THIS_WEEK": "This Week",
+      "THIS_MONTH": "This Month",
+      "THIS_YEAR": "This Year",
+      "SELECT": "Select...",
+      "MOVIE_HAS_BEEN_ADDED": "Movie has been added",
+      "REVIEW_REQUIRED": "Review is required",
+      "REVIEW_MIN_SYMBOL": "Review symbol",
+      "REVIEW": "Review",
+      "RATING": "Rating",
+      "WATCH": "Watch",
+      "MOVIE_DESCRIPTION": "Movie Description"
+    },
+    "detail": {
+      "TITLE": "Movie Title",
+      "PLOT": "Movie Plot",
+      "COUNTRY": "Movie Country",
+      "GENRE": "Movie Genre",
+      "REVIEW": "Review for this movie",
+      "RATING": "Rating for this movie",
+      "STATUS": "Status for this movie",
+      "WATCH": "Watch status for this movie"
     }
 }

@@ -1,0 +1,25 @@
+button {
+  width: 117px;
+  margin: auto;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+}
+
+svg {
+  width: 400px;
+  margin: 0 auto 40px;
+}
+
+h1 {
+  font-size: 150px;
+  text-align: center;
+}
+
+.not-found-page {
+  max-width: 40%;
+  margin: 50px auto 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

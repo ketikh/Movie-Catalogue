@@ -1,0 +1,117 @@
+#hideMe {
+  -moz-animation: cssAnimation 0s ease-in 2s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0s ease-in 2s forwards;
+  /* Opera */
+  animation: cssAnimation 0s ease-in 2s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  background: rgb(0 128 0 / 70%);
+    z-index: 100;
+    color: #fff;
+    width: 300px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 50px auto 0;
+}
+@keyframes cssAnimation {
+  to {
+      width:0;
+      height:0;
+      overflow:hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+      width:0;
+      height:0;
+      visibility:hidden;
+  }
+}
+
+.search-movie input {
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  height: 44px;
+  padding: 0 20px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100px;
+  margin: auto;
+}
+
+.search-movie {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 50px auto 0;
+}
+
+.badges {
+  justify-content: center;
+  margin: 20px 0 0;
+}
+
+.badge  {
+  background: rgb(255 0 0 / 10%);
+  padding: 7px 9px;
+  margin: 0 9px;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: #000;
+  cursor: pointer;
+}
+
+.movie-l {
+  margin-right: 40px;
+}
+
+.movie-l img {
+  border-radius: 15px;
+}
+
+.movie-container {
+  margin-top: 50px;
+}
+
+.movie-desc-row {
+  background: #fff;
+  padding: 5px 15px;
+}
+
+.movie-desc-row:nth-child(2n) {
+  background: #dfdddd;
+}
+
+textarea {
+  border: 1px solid #ccc;
+    border-radius: 30px;
+    height: 44px;
+    padding: 0 20px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    resize: none;
+    height: 150px;
+    width: 100%;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  width: 185px;
+}
+
+*:focus-visible {
+  border: none;
+  outline: none;
+}
+

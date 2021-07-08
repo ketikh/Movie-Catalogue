@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "movie-catalogue-a4c36": {
+      "hosting": {
+        "projectMovie": [
+          "movie-catalogue-a4c36"
+        ]
+      }
+    }
+  }
+}

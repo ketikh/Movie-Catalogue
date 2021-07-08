@@ -1,0 +1,25 @@
+.movie-l {
+  margin-right: 40px;
+}
+
+.movie-l img {
+  border-radius: 15px;
+}
+
+.movie-container {
+  margin-top: 50px;
+}
+
+.movie-desc-row {
+  background: #fff;
+  padding: 5px 15px;
+}
+
+.movie-desc-row span {
+  color: #e50914;
+  margin-right: 5px;
+}
+
+.movie-desc-row:nth-child(2n) {
+  background: #dfdddd;
+}
