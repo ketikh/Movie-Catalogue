@@ -12,24 +12,24 @@ interface User {
 })
 
 export class AuthService {
-  private _user: User; //ან null ია ან სავსე როცა ნალია ესეიგი დალოგაუთებულია;
+  private _user: User;
 
   get isLoggedIn(): boolean {
-    return !!this._user; //კოერცია ბულეანში
+    return !!this._user;
   }
 
   get userId(): string {
     return this._user.uid;
   }
 
-  private _initiated = false; //ამ ინდიკატორით ვამოწმებთ ჩატვირთული არის თუ არა სერვისი
+  private _initiated = false;
 
   get initiated(): boolean {
     return this._initiated;
   }
 
   constructor(private auth: AngularFireAuth) {
-    this.auth.onAuthStateChanged((user) => { //ყოველ შესვლაზე იძახებს და იძახებს ამ ფუნქციას
+    this.auth.onAuthStateChanged((user) => {
       this._user = user;
       if(!this._initiated) {
         this._initiated = true;

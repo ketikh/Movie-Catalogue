@@ -14,7 +14,6 @@ export class FireApiService {
 
   addMovie(body: AddMovieBody) {
     return from(this.store.collection('catalogue').add(body));
-    // from(this.store.collection('catalogue').add(body)).subscribe(() => this.reset());
   }
 
   getMovies(): Observable<MovieWithId[]> {
@@ -34,12 +33,9 @@ export class FireApiService {
     return this.store
       .collection<AddMovieBody>('catalogue', (ref) =>
         ref.where('uid', '==', this.auth.userId)
-      ) // ამ იუზერის კოლექციას დავფილტრავ
-      .doc(id) // წამოიღე ის დოკუმენტი მხოლოდ რომლის აიდიც გადავეცი
+      )
+      .doc(id)
       .get()
       .pipe(map((res) => res.data()));
   }
-//მიმართავს არსებულ კატალოგის კოლექციას და თუ არ არსებობს შექმნის,
-//ამოიღე ის წევრები რომლის იუზერ აიდი არის მიმდინარე იუზერის აიდის
-//ტოლი და  დააბრუნე მისი ვალიუჩეინჯები და როცა რამე შეიცვლება განახლდება
 }

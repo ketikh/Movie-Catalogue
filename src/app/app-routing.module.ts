@@ -9,20 +9,20 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['sign-in']);
 export const routes: Route [] = [
   {
     path: '',
-    canActivate: [AngularFireAuthGuard], //თუ დააბრუნა false გადაგიშვებს სხვა გვერდზე
-    data: { authGuardPipe: redirectLoggedInToItems },//გადაარედაქტირებს კატალოგზე თუ დალოგინებულია
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule), //lazy loading
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToItems },
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'catalogue',
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }, // როცა კატალოგზე შევა თუ არ არის დალოგინებული გადაამისამართებს ლოგინზე
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     loadChildren: () => import('./catalogue/catalogue.module').then((m) => m.CatalogueModule),
   },
   {
     path: '**',
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }, // როცა კატალოგზე შევა თუ არ არის დალოგინებული გადაამისამართებს ლოგინზე
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     component: NotFoundComponent,
   }
 ];

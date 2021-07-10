@@ -14,7 +14,7 @@ export const routes: Route [] = [
     component: AddMovieComponent,
   },
   {
-    path: ':id', // : კომპონენტიდან რომ მიწვდეს პარამეტრად id
+    path: ':id',
     component: MovieDetailsComponent,
   },
 ];

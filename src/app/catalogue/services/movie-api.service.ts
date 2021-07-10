@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { stringify } from '@angular/compiler/src/util';
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CountryResult, MovieResult } from '../catalogue.model';
@@ -13,7 +12,7 @@ export class MovieApiService {
   }
 
   getMovieByName(name: String): Observable<MovieResult> {
-    return this.http.get<MovieResult>(`${this.baseUrl}&t=${name}`); // API დან გამომდინარე, get დააბრუნებს observable ს
+    return this.http.get<MovieResult>(`${this.baseUrl}&t=${name}`);
   }
 
   getMovieByImdbId(imdbId: string): Observable<MovieResult> {

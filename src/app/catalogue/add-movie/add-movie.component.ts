@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit, ResolvedReflectiveFactory } from '@angular/core';
-import { ɵAngularFireSchedulers } from '@angular/fire';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError, finalize, map, switchMap, takeUntil } from 'rxjs/operators';
 import { StorageService } from 'src/app/services/storage.service';
@@ -9,7 +7,6 @@ import { AddMovieBody, Country, Movie, MovieResult, RATINGS, Status, WhenToWatch
 import { MovieApiService } from '../services/movie-api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FireApiService } from '../services/fire-api.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-movie',
@@ -22,7 +19,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
   searchKey: string;
   hasError: boolean;
 
-  lastThreeSearches: string[] = []; //ბოლო სამი დასერჩილი ფილმისთვის შევქმენით
+  lastThreeSearches: string[] = [];
 
   form: FormGroup;
 
@@ -41,7 +38,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
   }
 
   get canWatchLater(): boolean {
-    return !!this.form.get('whenToWatch'); //კოერცია ბულიანში
+    return !!this.form.get('whenToWatch');
   }
 
   private _selectedMovie: Movie;
@@ -57,13 +54,12 @@ export class AddMovieComponent implements OnInit, OnDestroy {
 
   private addToLastSearches(name: string) {
     if (this.lastThreeSearches.length < 3) {
-      this.lastThreeSearches = [name, ...this.lastThreeSearches]; // spread
+      this.lastThreeSearches = [name, ...this.lastThreeSearches];
       return;
     }
 
-    this.lastThreeSearches = [name, ...this.lastThreeSearches.slice(0, 2)]; // slice ამოვიღოთ პირველი სამი
+    this.lastThreeSearches = [name, ...this.lastThreeSearches.slice(0, 2)];
 
-    //ლოქალ სთორიჯში შევინახოთ ეს key ები, რადგან სტრინგად უნდა შევინახოთ გამოვიყენეთ JSON.Stringify(ობიექტი გადაყავს სტინში)
     this.storage.set('lastThreeSearches', this.lastThreeSearches)
   }
 
@@ -76,7 +72,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
           population: country.population,
         };
       }),
-      catchError((error) => {return of(null);}) // თუ ქვეყანა არ რის კონკრეტულ კოდზე დააბრუნოს ნალი და არ გააფუჭოს მთელი სია
+      catchError((error) => {return of(null);})
       );
   }
 
@@ -106,11 +102,9 @@ export class AddMovieComponent implements OnInit, OnDestroy {
       return forkJoin(
         countries.map((code) =>this.getCountryWithPopulation(code)))
         .pipe(map<Country[], Movie>(countries =>this.mapMovie(movie, countries)))
-      //გადავეცით სტრინგების ერეი და დააბრუნა ობზერვებლი თითოეულ ქვეყანაზე რომელსაც შეუძლია მოიტანოს ნებისმიერ ქვეყანაზე დატა
-      //გეთერი გვიწერია movie-api.service-ში
      })
      )
-     .subscribe((movie) => (this._selectedMovie = movie));// ერთნაირი ბეიჯები რომ არ დაამატოს
+     .subscribe((movie) => (this._selectedMovie = movie));
   }
 
 
@@ -122,18 +116,18 @@ export class AddMovieComponent implements OnInit, OnDestroy {
 
     this.hasError = false;
 
-    this.addToLastSearches(key); // ბოლო სამ დასერჩილის ერეიში ჩაემატოს დასერცილი ქი
+    this.addToLastSearches(key);
     this.fetchMovie(key);
   }
 
   private restoreState() {
-    const lastThreeSearches = this.storage.get<string[]>('lastThreeSearches');//ლოკალსთორიჯიდან ამოვიღოთ key ები,
+    const lastThreeSearches = this.storage.get<string[]>('lastThreeSearches');
     if (lastThreeSearches?.length > 0) {
       this.lastThreeSearches = lastThreeSearches;
     }
   }
 
-  private createForm() {  //ფორმის შექმნა
+  private createForm() {
     this.form = this.fb.group({
       review: ['', [Validators.required, Validators.minLength(10)]],
       rating: 1,
@@ -161,19 +155,17 @@ export class AddMovieComponent implements OnInit, OnDestroy {
     }
 
     this.fireApiService.addMovie(body).subscribe(() => this.reset());
-
-    // from(this.store.collection('catalogue').add(body)).subscribe(() => this.reset());
   }
 
 
   private reset() {
-    this._selectedMovie = null; //მოძებნილი ფილმი რომ გაქრეს დარესეტდეს
-    this.form.reset(); // ფორმა დარესეტდეს
+    this._selectedMovie = null;
+    this.form.reset();
 
-    this.form.updateValueAndValidity(); //ვალიდაციაც რომ დარესეტდეს
-    this.submitted = false; // ესეც ვალიდააციის რესეტი
+    this.form.updateValueAndValidity();
+    this.submitted = false;
 
-    this.successAddMovie = true; //გამოაჩინე დივი რომელშიც წერია რო წარმატებით დაემატა ფილმი
+    this.successAddMovie = true;
   }
 
   private addControlsByStatus(status: Status) {
@@ -193,7 +185,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
     this.form.get('status').valueChanges.pipe(takeUntil(this.unsubscribe$)).subscribe(status => this.addControlsByStatus(status));
   }
 
-  ngOnDestroy() { //ანსაბსქრაიბი გაუკეთოს როდესაც კომპონენტი აღარ იქნება
+  ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
